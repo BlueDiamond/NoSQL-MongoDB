@@ -1,4 +1,4 @@
-package com.bd.spring.mvc.db.mongodb;
+package com.bd.nosql.mongodb;
 
 import java.net.UnknownHostException;
 
