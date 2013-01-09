@@ -1,0 +1,123 @@
+
+
+---- basic commands---
+# http://www.mkyong.com/mongodb/mongodb-hello-world-example/
+
+$ ./mongo
+MongoDB shell version: 2.0.7
+connecting to: test
+> use sedan
+switched to db sedan
+ 
+> db.users.insert({username:"pal",password:"admin123"})
+> db.users.find() { "_id" : ObjectId("504f45cd17f6c778042c3c07"), "username" : "pal", "password" : "admin123" }
+
+users - table name
+
+db.users.find()
+result: {"username" : "pal", "password" : "admin123" }
+---
+show dbs – List all databases.
+use sedan – Switches to sedan database.
+show collections – List all tables in the current selected database.
+----
+Note: In MongoDB, collection means table in SQL.
+--------------------------------------------------------------------------------------------------
+collection is implicitly created on first insert operation. 
+However, we can also explicitly create a collection:
+
+db.createCollection("users")
+--------------------------------------------------------------------------------------------------
+
+Insert A Record:
+To insert a record, uses db.tablename.insert({data}) or db.tablename.save({data}), 
+both works, no idea why MongoDB created both.
+
+ex:
+db.users.insert({username:"kodi",password:"admin123"})
+or
+db.users.save({username:"kodi",password:"admin123"})
+
+define a record and insert:
+j = { name : "mongo" }
+k = { x : 3 }
+
+db.things.insert( j )
+db.things.insert( k )
+--------------------------------------------------------------------------------------------------
+Update A Record:
+To update a record, uses db.tablename.update({criteria},{$set: {new value}}). 
+In below example, the password of username : "kodi" is updated.
+
+db.users.update({username:"kodi"},{$set:{password:"smash123"}})
+--------------------------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------
+Read :
+db.collection.find( <query>, <projection> )
+
+the <query> argument corresponds to the WHERE statement, and
+the <projection> argument corresponds to the list of fields to select from the result set.
+
+ex:
+
+--------------------------------------------------------------------------------------------------
+Delete:
+db.collection.remove( <query>, <justOne> )
+
+to delete all documents from the bios collection:
+db.bios.remove()
+
+--------------------------------------------------------------------------------------------------
+Index:
+db.users.ensureIndex( { user_id: 1 } )
+--------------------------------------------------------------------------------------------------
+Drop collection:
+db.users.drop()
+--------------------------------------------------------------------------------------------------
+count number of documents:
+db.users.count()
+or
+db.users.find().count()
+--------------------------------------------------------------------------------------------------
+distinct:
+db.users.distinct( "status" )
+--------------------------------------------------------------------------------------------------
+
+bsondump things.bson > /home/temp/things.json
+
+bsondump --type=debug things.bson
+--------------------------------------------------------------------------------------------------
+
+mongoexport --db sedan --collection things --csv --out  /home/temp/things.csv
+
+--------------------------------------------------------------------------------------------------
+projection
+A document given to a query that specifies which fields MongoDB will return from the documents in the result set.
+--------------------------------------------------------------------------------------------------
+sharding
+A database architecture that enable horizontal scaling by splitting data into key ranges among 
+two or more replica sets. This architecture is also known as “range-based partitioning.” 
+--------------------------------------------------------------------------------------------------
+upsert
+A kind of update that either updates the first document matched in the provided query selector or,
+ if no document matches, inserts 
+--------------------------------------------------------------------------------------------------
+write concern
+Specifies whether a write operation has succeeded. Write concern allows your application to 
+detect insertion errors or unavailable mongod instances. 
+--------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
