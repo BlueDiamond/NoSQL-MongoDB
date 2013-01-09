@@ -1,4 +1,4 @@
-package com.bd.nosql.mongodb;
+package com.bd.nosql.mongodb.plainclient;
 
 import java.net.UnknownHostException;
 
