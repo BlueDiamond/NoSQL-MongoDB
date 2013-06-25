@@ -26,7 +26,7 @@
 
 	<mongo:db-factory dbname="sedan" />
 
-	<!-- <mongo:db-factory id="anotherMongoDbFactory" host="localhost" port="27017" dbname="database" username="joe" password="secret" /> -->
+	<!-- <mongo:db-factory id="mongoDbFactory" host="localhost" port="27017" dbname="sedan" username="pal" password="admin123" /> -->
 
 	<bean id="mappingContext" class="org.springframework.data.mongodb.core.mapping.MongoMappingContext"></bean>
 
